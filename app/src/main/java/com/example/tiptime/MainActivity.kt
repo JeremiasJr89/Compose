@@ -10,7 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,11 +35,15 @@ class MainActivity : ComponentActivity() {
     }
 
 }
+
 @Composable
 fun EditNumberField() {
+    var amountInput by remember {
+        mutableStateOf("")
+    }
     TextField(
-        value = "",
-        onValueChange = {},
+        value = amountInput,
+        onValueChange = { amountInput = it },
     )
 }
 
@@ -66,4 +70,5 @@ fun DefaultPreview() {
     TipTimeTheme {
         TipTimeScreen()
     }
+
 }
