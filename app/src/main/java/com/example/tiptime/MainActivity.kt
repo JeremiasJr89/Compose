@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TipTimeTheme {
-                // A surface container using the 'background' color from the
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -38,7 +37,7 @@ class MainActivity : ComponentActivity() {
     }
 
 }
-
+//region Compose
 @Composable
 fun TipTimeScreen() {
     var amountInput by remember {
@@ -95,7 +94,7 @@ fun DefaultPreview() {
     }
 
 }
-
+//endregion
 private fun calculateTip(
     amount: Double,
     tipPercent: Double = 15.0
