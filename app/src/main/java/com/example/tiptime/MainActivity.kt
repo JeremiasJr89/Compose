@@ -40,29 +40,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun EditNumberField(
-    value: String,
-    onValueChange: (String) -> Unit
-) {
-    TextField(
-        value = value,
-        onValueChange = onValueChange,
-        label = { Text(stringResource(R.string.cost_of_service)) },
-        modifier = Modifier.fillMaxWidth(),
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-    )
-}
-
-private fun calculateTip(
-    amount: Double,
-    tipPercent: Double = 15.0
-): String {
-    val tip = tipPercent / 100 * amount
-    return NumberFormat.getCurrencyInstance().format(tip)
-}
-
-@Composable
 fun TipTimeScreen() {
     var amountInput by remember {
         mutableStateOf("")
@@ -94,6 +71,21 @@ fun TipTimeScreen() {
     }
 }
 
+@Composable
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(stringResource(R.string.cost_of_service)) },
+        modifier = Modifier.fillMaxWidth(),
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
+}
+
 
 @Preview(showBackground = true)
 @Composable
@@ -102,4 +94,12 @@ fun DefaultPreview() {
         TipTimeScreen()
     }
 
+}
+
+private fun calculateTip(
+    amount: Double,
+    tipPercent: Double = 15.0
+): String {
+    val tip = tipPercent / 100 * amount
+    return NumberFormat.getCurrencyInstance().format(tip)
 }
